@@ -1,21 +1,20 @@
 import Button from "./Button.jsx";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Text from "./Text.js";
 
 const App = () => {
-     const [dataf, setDataf] = useState();
+    const [counter, setCounter] = useState(0)
 
-    const data = [
-        {id: 'a', Text: "text1"},
-        {id: 'b', Text: "text2"},
-        {id: 'c', Text: "text3"},
-        {id: 'd', Text: "text4"},
-        {id: 'e', Text: "text5"},
-    ]
+    useEffect(() => {
+            setInterval(() => {
+                setCounter((prevCounter => prevCounter + 1))
+            }, 1000)
+    }, [])
+    
     return <>
-        {data.map((item) => <Text>{item.Text}</Text>)}
+    <span>Current time is:  {counter}</span>
+      
     </>
-
 }
 
 export default App;
